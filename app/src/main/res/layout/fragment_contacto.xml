@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Contacto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/contacto_bienvenido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="120dp"
+            android:layout_marginLeft="120dp"
+            android:layout_marginTop="49dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/bienvenidx"
+            android:textColor="#000000"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/contacto_departamento"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="95dp"
+            android:layout_marginLeft="95dp"
+            android:layout_marginTop="42dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/departamento_de_inclusi_n"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contacto_bienvenido" />
+
+        <TextView
+            android:id="@+id/contacto_telefono"
+            android:layout_width="351dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="49dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/contacto_nn_mero_de_tel_fono_xxxxxxxxx_ncorreo_electr_nico_foroinclusion_tec_mx"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contacto_departamento" />
+
+        <TextView
+            android:id="@+id/contacto_horario"
+            android:layout_width="351dp"
+            android:layout_height="86dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="31dp"
+            android:fontFamily="sans-serif"
+            android:gravity="center"
+            android:text="@string/horario_de_atenci_n_nlunes_a_viernes_7_00_a_m_5_00_p_m_ns_bado_10_00_a_m_4_00_p_m"
+            android:textColor="#000000"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contacto_telefono" />
+
+        <Button
+            android:id="@+id/contacto_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="156dp"
+            android:layout_marginLeft="156dp"
+            android:layout_marginTop="55dp"
+            android:text="@string/ingresar"
+            app:backgroundTint="#000000"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/contacto_horario" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

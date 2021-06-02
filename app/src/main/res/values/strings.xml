@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Foro de Inclusion Version 0.1</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="bienvenidx">BIENVENIDX</string>
+    <string name="departamento_de_inclusi_n">Departamento de Inclusión</string>
+    <string name="contacto_nn_mero_de_tel_fono_xxxxxxxxx_ncorreo_electr_nico_foroinclusion_tec_mx">Contacto:\nNúmero de teléfono: XXXXXXXXX\nCorreo electrónico: foroInclusion@tec.mx</string>
+    <string name="horario_de_atenci_n_nlunes_a_viernes_7_00_a_m_5_00_p_m_ns_bado_10_00_a_m_4_00_p_m">Horario de atención:\nLunes a viernes: 7:00 A.M. - 5:00 P.M.\nSábado: 10:00 A.M. - 4:00 P.M.</string>
+    <string name="ingresar">Ingresar</string>
+    <string name="drawer_open">Open Drawer</string>
+    <string name="drawer_close">Close Drawer</string>
+</resources>

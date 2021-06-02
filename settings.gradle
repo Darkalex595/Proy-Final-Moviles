@@ -1,0 +1,2 @@
+include ':app'
+rootProject.name = "Foro de Inclusion Version 0.1"
