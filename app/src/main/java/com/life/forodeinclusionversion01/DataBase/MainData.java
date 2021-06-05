@@ -23,6 +23,10 @@ public class MainData implements Serializable {
     @ColumnInfo(name = "descripcion")
     private String descripcion;
 
+    //Columna de Fecha
+    @ColumnInfo(name = "fecha")
+    private String fecha;
+
     //Getters y setters
 
     public int getID() {
@@ -48,4 +52,9 @@ public class MainData implements Serializable {
     public void setText2(String descripcion) {
         this.descripcion = descripcion;
     }
+
+    public String getFecha(){return fecha;}
+
+    public void setFecha(String fecha){this.fecha = fecha;}
+
 }

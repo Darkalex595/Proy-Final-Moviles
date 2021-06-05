@@ -35,4 +35,9 @@ public interface MainDao {
     //Query Get all data
     @Query("SELECT * FROM tabla_foro")
     List<MainData> getAll();
+
+    //Get element filter by fecha
+    @Query("SELECT * FROM tabla_foro WHERE fecha = :sFecha")
+    List<MainData> SearchByFecha(String sFecha);
+
 }

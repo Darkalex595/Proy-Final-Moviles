@@ -3,13 +3,34 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Calendario">
+    tools:context="Calendario">
 
     <!-- TODO: Update blank fragment layout -->
+
+    <CalendarView
+        android:id="@+id/vCalendario"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="120dp"
+        android:layout_marginStart="30dp" />
+
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Calendario"
-        android:textSize="36sp" />
+        android:id="@+id/tEvento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="No hay evento"
+        android:layout_marginLeft="160dp"
+        android:layout_marginTop="500dp"
+        />
+
+    <TextView
+        android:id="@+id/tDescripcion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Descripción"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="530dp" />
+
 
 </FrameLayout>
