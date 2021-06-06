@@ -1,59 +1,84 @@
 package com.life.forodeinclusionversion01;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link Eventos#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class Eventos extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    @Override
+    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    //Aqui se declaran los botones a los que se les agregaran las funciones
+    Button inclusionRegistro, inclusionRedes, inclusionCalendario;
+    Button lgbtRegistro, lgbtRedes, lgbtCalendario;
 
-    public Eventos() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment Eventos.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static Eventos newInstance(String param1, String param2) {
-        Eventos fragment = new Eventos();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
+    //Aqui se declaran los TextView de los que se sacara la informacion para que los botones funcionen
+    TextView inclusionTitulo, inclusionInformacion;
+    TextView lgbtTitulo, lgbtInformacion;
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        //Aqui se les tiene que asignar su respectivo ID a cada boton
+        inclusionRegistro = view.findViewById(R.id.inclusion_registro);
+        inclusionRedes = view.findViewById(R.id.inclusion_redes);
+        inclusionCalendario = view.findViewById(R.id.inclusion_calendario);
+
+        lgbtRegistro = view.findViewById(R.id.lgbt_registro);
+        lgbtRedes = view.findViewById(R.id.lgbt_redes);
+        lgbtCalendario = view.findViewById(R.id.lgbt_calendario);
+
+        //Aqui se les tiene que asignar su respectivo ID a cada TextView
+        inclusionTitulo = view.findViewById(R.id.inclusion_titulo);
+        inclusionInformacion = view.findViewById(R.id.inclusion_informacion);
+
+        lgbtTitulo = view.findViewById(R.id.lgbt_titulo);
+        lgbtInformacion = view.findViewById(R.id.lgbt_informacion);
+
+        //Aqui se le asignan las acciones a cada boton
+        //Insertar enlace a forms donde se registrarán las personas
+        inclusionRegistro.setOnClickListener(view1 -> {abrirRegistro("https://docs.google.com/forms/d/e/1FAIpQLSd09Gs-125vGNkWsYhk9vgQAWGmSWtRJehBvLSDEjJQdGdpoQ/viewform?usp=sf_link"); });
+        //Insertar el link de las redes sociales del ponente
+        inclusionRedes.setOnClickListener(view1 -> {abrirRedes("https://twitter.com/elonmusk");});
+        inclusionCalendario.setOnClickListener(view1 -> {abrirCalendario();});
+
+        //Insertar enlace a forms donde se registrarán las personas
+        lgbtRegistro.setOnClickListener(view1 -> {abrirRegistro("https://docs.google.com/forms/d/e/1FAIpQLScg3mz6GIYu_TVAGpGkx0pcLxKUFJIn-gjcFKq0XNI-TzeFlA/viewform?usp=sf_link"); });
+        //Insertar el link de las redes sociales del ponente
+        lgbtRedes.setOnClickListener(view1 -> {abrirRedes("https://twitter.com/Reforma");});
+        lgbtCalendario.setOnClickListener(view1 -> {abrirCalendario();});
     }
+
+    public void abrirRegistro(String url){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(browserIntent);
+    }
+
+    public void abrirRedes(String url){
+        Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
+        startActivity(browserIntent);
+    }
+
+    public void abrirCalendario(){
+
+
+    }
+
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
