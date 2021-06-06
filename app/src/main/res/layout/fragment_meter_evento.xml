@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MeterEvento">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <EditText
+        android:id="@+id/editTitulo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="Titulo"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/editDescripcion"
+        android:layout_width="394dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:ems="10"
+        android:hint="Descripcion"
+        android:inputType="textPersonName" />
+
+    <CalendarView
+        android:id="@+id/datePicker"
+        android:layout_width="wrap_content"
+        android:layout_height="302dp"
+        android:layout_marginLeft="30dp"
+        android:layout_marginTop="200dp" />
+
+    <Button
+        android:id="@+id/c_event"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Crear Evento"
+        android:layout_marginTop="550dp"
+        android:layout_marginLeft="150dp"/>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ingrese el Evento"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="50dp"
+        android:textColor="@color/black"
+        android:textStyle="bold|italic"
+        android:textSize="20sp"/>
+
+</FrameLayout>

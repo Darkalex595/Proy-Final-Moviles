@@ -84,6 +84,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_notifications:
                 ft.replace(R.id.content, new Notificaciones()).addToBackStack(null).commit();
                 break;
+            case R.id.nav_ing_eventos:
+                ft.replace(R.id.content, new MeterEvento()).addToBackStack(null).commit();
+                break;
             case R.id.nav_settings:
                 ft.replace(R.id.content, new Opciones()).addToBackStack(null).commit();
                 break;

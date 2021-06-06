@@ -22,7 +22,8 @@ import java.util.List;
 public class Calendario extends Fragment {
 
     private RoomDB roomDB;
-    private MainData mainData;
+    private MainData mD;
+    String ListaNombres;
 
     public Calendario() {
         // Required empty public constructor
@@ -45,17 +46,33 @@ public class Calendario extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        roomDB = RoomDB.getInstance(getActivity());
         CalendarView cView = view.findViewById(R.id.vCalendario);
         TextView Confirmacion = view.findViewById(R.id.tEvento);
-        //List<MainData> list = roomDB.mainDao().getAll();
-        //MainData mD = list.get(0);
+
+
+
         
         cView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
                 String Date = dayOfMonth + "/" + month + "/" + year;
-                //Confirmacion.setText(String.valueOf(mD.getText()));
-                Confirmacion.setText(Date);
+                ListaNombres = "";
+                List<MainData> list = roomDB.mainDao().SearchByFecha(Date);
+                if(list.size() > 0){
+                    for(int i = 0; i < list.size(); i++){
+                        ListaNombres = ListaNombres + "- ";
+                        mD = list.get(i);
+                        ListaNombres = ListaNombres + (String.valueOf(mD.getTitulo())) + "\n";
+                    }
+
+                    Confirmacion.setText(ListaNombres);
+                }
+                else{
+                    Confirmacion.setText("No hay eventos!!!");
+                }
+
+                //Confirmacion.setText(Date);
             }
         });
 

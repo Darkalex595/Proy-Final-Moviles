@@ -20,6 +20,10 @@
         android:id="@+id/nav_notifications"
         android:icon="@drawable/notification_icon"
         android:title="Notificaciones"/>
+    <item
+        android:id="@+id/nav_ing_eventos"
+        android:icon="@drawable/notification_icon"
+        android:title="Ingresar Eventos"/>
 </group>
     <group
         android:id="@+id/group2"

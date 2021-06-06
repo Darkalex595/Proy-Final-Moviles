@@ -29,6 +29,12 @@ public class MainData implements Serializable {
 
     //Getters y setters
 
+    public MainData(String titulo, String descripcion, String fecha){
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.fecha = fecha;
+    }
+
     public int getID() {
         return ID;
     }
@@ -37,19 +43,19 @@ public class MainData implements Serializable {
         this.ID = ID;
     }
 
-    public String getText() {
+    public String getTitulo() {
         return titulo;
     }
 
-    public void setText(String titulo) {
+    public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
 
-    public String getText2() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setText2(String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
