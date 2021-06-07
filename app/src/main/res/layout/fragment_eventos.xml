@@ -66,6 +66,12 @@
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="?android:attr/textColorSecondary" />
 
+                        <Button
+                            android:id="@+id/notificacion_event_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/switchNotif" />
+
                     </LinearLayout>
                     <!--Se debe cambiar el ID de cada boton y luego ser modificado en Eventos.java para hacerlo funcionar como el resto-->
                     <!-- Buttons -->
@@ -109,6 +115,7 @@
                 android:id="@+id/card2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="visible"
                 android:layout_margin="8dp">
 
                 <LinearLayout
@@ -151,6 +158,12 @@
                             android:text="En este evento se contará con la presencia de Juanito Domínguez, quien nos explicará cómo evitar utilizar lenguaje ofensivo hacia personas de la comunidad LGBTQ+, y cómo ser más inclusivos en nuestro entorno."
                             android:textAppearance="?attr/textAppearanceBody2"
                             android:textColor="?android:attr/textColorSecondary" />
+
+                        <Button
+                            android:id="@+id/notificacion_event_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/switchNotif" />
 
                     </LinearLayout>
 

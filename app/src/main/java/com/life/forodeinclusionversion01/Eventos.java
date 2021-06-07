@@ -1,25 +1,32 @@
 package com.life.forodeinclusionversion01;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
-import android.provider.CalendarContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+
+import static android.content.Context.*;
 
 public class Eventos extends Fragment {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState); }
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        sharedPreferences = getActivity().getSharedPreferences("Notificaciones", MODE_PRIVATE);
+        editor = sharedPreferences.edit();
+    }
 
     //Aqui se declaran los botones a los que se les agregaran las funciones
     Button inclusionRegistro, inclusionRedes, inclusionCalendario;
@@ -28,6 +35,10 @@ public class Eventos extends Fragment {
     //Aqui se declaran los TextView de los que se sacara la informacion para que los botones funcionen
     TextView inclusionTitulo, inclusionInformacion;
     TextView lgbtTitulo, lgbtInformacion;
+
+    Button bNotif1, bNotif2;
+    SharedPreferences sharedPreferences;
+    SharedPreferences.Editor editor;
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -41,6 +52,9 @@ public class Eventos extends Fragment {
         lgbtRegistro = view.findViewById(R.id.lgbt_registro);
         lgbtRedes = view.findViewById(R.id.lgbt_redes);
         lgbtCalendario = view.findViewById(R.id.lgbt_calendario);
+
+        bNotif1 = view.findViewById(R.id.notificacion_event_1);
+        bNotif2 = view.findViewById(R.id.notificacion_event_2);
 
         //Aqui se les tiene que asignar su respectivo ID a cada TextView
         inclusionTitulo = view.findViewById(R.id.inclusion_titulo);
@@ -61,6 +75,23 @@ public class Eventos extends Fragment {
         //Insertar el link de las redes sociales del ponente
         lgbtRedes.setOnClickListener(view1 -> {abrirRedes("https://twitter.com/Reforma");});
         lgbtCalendario.setOnClickListener(view1 -> {abrirCalendario();});
+
+
+        bNotif1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putBoolean("notif_1", true);
+                editor.apply();
+            }
+        });
+        bNotif2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editor.putBoolean("notif_2", true);
+                editor.apply();
+            }
+        });
+
     }
 
     public void abrirRegistro(String url){
