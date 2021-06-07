@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.provider.CalendarContract;
 import android.view.LayoutInflater;
@@ -74,8 +75,18 @@ public class Eventos extends Fragment {
     }
 
     public void abrirCalendario(){
+        FragmentTransaction transaction;
+        Fragment fragment;
 
+        transaction = getFragmentManager().beginTransaction();
 
+        fragment = new MeterEvento();
+
+        transaction.replace(R.id.content,fragment);
+
+        transaction.addToBackStack(null);
+
+        transaction.commit();
     }
 
 
