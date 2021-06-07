@@ -1,5 +1,6 @@
 package com.life.forodeinclusionversion01;
 
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.Gravity;

@@ -9,4 +9,7 @@
     <string name="ingresar">Ingresar</string>
     <string name="drawer_open">Open Drawer</string>
     <string name="drawer_close">Close Drawer</string>
+    <string name="switchNotif">Recibir Notificaciones 1 Dia Antes</string>
+    <string name="switchNotifCancel">Anular Notificaciones</string>
+    <string name="no_Notif">No se ha suscrito para recibir notificaciones para algun evento.</string>
 </resources>
