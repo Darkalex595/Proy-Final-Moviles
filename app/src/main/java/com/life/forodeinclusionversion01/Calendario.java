@@ -83,7 +83,7 @@ public class Calendario extends Fragment {
                         //ListaNombres = ListaNombres + "- ";
                         mD = list.get(i);
                         Nombres = mD.getTitulo();
-                        Hora = mD.getDescripcion();
+                        Hora = mD.getHora();
                         listaEvento.add(new evento_calendario(Nombres, Hora));
                         //ListaNombres = ListaNombres + (String.valueOf(mD.getTitulo())) + "\n";
                     }
