@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.life.forodeinclusionversion01.DataBase.MainData;
 import com.life.forodeinclusionversion01.DataBase.RoomDB;
 
+import java.util.List;
+
 
 public class MeterEvento extends Fragment {
 
@@ -52,7 +54,9 @@ public class MeterEvento extends Fragment {
         CalendarView cView = view.findViewById(R.id.datePicker);
         TextView titulo = view.findViewById(R.id.editTitulo);
         TextView decrip = view.findViewById(R.id.editDescripcion);
+        TextView hour = view.findViewById(R.id.tHora);
         Button añadir = view.findViewById(R.id.c_event);
+        Button borrar = view.findViewById(R.id.c_delete);
 
         cView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -68,12 +72,36 @@ public class MeterEvento extends Fragment {
             public void onClick(View v) {
                 String title = String.valueOf(titulo.getText());
                 String description = String.valueOf(decrip.getText());
-                String fecha = dia +  "/" + mes + "/" + año;
-                MainData md = new MainData(title, description, fecha);
-                roomDB.mainDao().insert(md);
+                String Hora = String.valueOf(hour.getText());
 
+                if(title.matches("") || description.matches("") || Hora.matches("")){
+                    Toast.makeText(getActivity().getApplicationContext(), "Hay que llenar todos los campos", Toast.LENGTH_SHORT).show();
+                }
+
+                else{
+                    String fecha = dia +  "/" + mes + "/" + año;
+                    MainData md = new MainData(title, description, fecha, Hora);
+                    roomDB.mainDao().insert(md);
+
+                    titulo.setText("");
+                    decrip.setText("");
+                    hour.setText("");
+
+                    Toast.makeText(getActivity().getApplicationContext(), "Evento agregado", Toast.LENGTH_SHORT).show();
+                }
+
+
+            }
+        });
+
+        borrar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                List<MainData> lista = roomDB.mainDao().getAll();
+                roomDB.mainDao().reset(lista);
                 titulo.setText("");
                 decrip.setText("");
+                hour.setText("");
             }
         });
 

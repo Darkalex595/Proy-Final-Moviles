@@ -27,12 +27,16 @@ public class MainData implements Serializable {
     @ColumnInfo(name = "fecha")
     private String fecha;
 
+    @ColumnInfo(name = "Hora")
+    private String hora;
+
     //Getters y setters
 
-    public MainData(String titulo, String descripcion, String fecha){
+    public MainData(String titulo, String descripcion, String fecha, String hora){
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.fecha = fecha;
+        this.hora = hora;
     }
 
     public int getID() {
@@ -62,5 +66,9 @@ public class MainData implements Serializable {
     public String getFecha(){return fecha;}
 
     public void setFecha(String fecha){this.fecha = fecha;}
+
+    public String getHora(){return hora;}
+
+    public void setHora(String hora){this.hora = hora;}
 
 }
