@@ -20,6 +20,8 @@ import android.widget.Toast;
 import com.life.forodeinclusionversion01.DataBase.MainData;
 import com.life.forodeinclusionversion01.DataBase.RoomDB;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -32,6 +34,7 @@ public class MeterEvento extends Fragment {
     String año;
     String mes;
     String dia;
+    String fecha;
 
     private RoomDB roomDB;
 
@@ -58,12 +61,35 @@ public class MeterEvento extends Fragment {
         Button añadir = view.findViewById(R.id.c_event);
         Button borrar = view.findViewById(R.id.c_delete);
 
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date(System.currentTimeMillis());
+        fecha = formatter.format(date);
+
         cView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView view, int year, int month, int dayOfMonth) {
+                month = month + 1;
+
+                if(dayOfMonth < 10){
+                    dia = String.valueOf(dayOfMonth);
+                    dia = "0"+dia;
+                }
+                else{
+                    dia = String.valueOf(dayOfMonth);
+                }
+
+                if(month < 10){
+                    mes = String.valueOf(month);
+                    mes = "0"+mes;
+                }
+                else{
+                    mes = String.valueOf(month);
+                }
+
                 año = String.valueOf(year);
-                mes = String.valueOf(month);
-                dia = String.valueOf(dayOfMonth);
+
+                fecha = dia +  "/" + mes + "/" + año;
+
             }
         });
 
@@ -79,7 +105,7 @@ public class MeterEvento extends Fragment {
                 }
 
                 else{
-                    String fecha = dia +  "/" + mes + "/" + año;
+
                     MainData md = new MainData(title, description, fecha, Hora);
                     roomDB.mainDao().insert(md);
 

@@ -18,7 +18,9 @@ import android.widget.TextView;
 import com.life.forodeinclusionversion01.DataBase.MainData;
 import com.life.forodeinclusionversion01.DataBase.RoomDB;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -32,6 +34,11 @@ public class Calendario extends Fragment {
     private RecyclerView recyclerView;
     private Adapter_evento_calendario adaptador;
     private List<evento_calendario> listaEvento = new ArrayList<evento_calendario>();
+    private List<MainData> list;
+
+    String año;
+    String mes;
+    String dia;
 
     public Calendario() {
         // Required empty public constructor
@@ -66,8 +73,35 @@ public class Calendario extends Fragment {
         recyclerView.setVisibility(view.GONE);
         Confirmacion.setVisibility(view.GONE);
 
+        SimpleDateFormat formatter= new SimpleDateFormat("dd/MM/yyyy");
+        Date date = new Date(System.currentTimeMillis());
+        String fecha = formatter.format(date);
+        System.out.println(fecha);
+
+        list = roomDB.mainDao().SearchByFecha(fecha);
+        if(list.size() > 0){
+            for(int i = 0; i < list.size(); i++){
+                //ListaNombres = ListaNombres + "- ";
+                mD = list.get(i);
+                Nombres = mD.getTitulo();
+                Hora = mD.getHora();
+                listaEvento.add(new evento_calendario(Nombres, Hora));
+                //ListaNombres = ListaNombres + (String.valueOf(mD.getTitulo())) + "\n";
+            }
+
+            adaptador = new Adapter_evento_calendario(getActivity(), listaEvento);
+            recyclerView.setAdapter(adaptador);
+            recyclerView.setVisibility(view.VISIBLE);
+            Confirmacion.setVisibility(view.GONE);
 
 
+            //Confirmacion.setText(ListaNombres);
+        }
+        else{
+            recyclerView.setVisibility(view.GONE);
+            Confirmacion.setText("No hay eventos!!!");
+            Confirmacion.setVisibility(view.VISIBLE);
+        }
         
         cView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
@@ -75,9 +109,30 @@ public class Calendario extends Fragment {
                 if(listaEvento.size() > 0){
                     listaEvento.clear();
                 }
-                String Date = dayOfMonth + "/" + month + "/" + year;
+                month = month + 1;
+
+                if(dayOfMonth < 10){
+                    dia = String.valueOf(dayOfMonth);
+                    dia = "0"+dia;
+                }
+                else{
+                    dia = String.valueOf(dayOfMonth);
+                }
+
+                if(month < 10){
+                    mes = String.valueOf(month);
+                    mes = "0"+mes;
+                }
+                else{
+                    mes = String.valueOf(month);
+                }
+
+                año = String.valueOf(year);
+
+                String Date = dia + "/" + mes + "/" + año;
+                System.out.println(Date);
                 ListaNombres = "";
-                List<MainData> list = roomDB.mainDao().SearchByFecha(Date);
+                list = roomDB.mainDao().SearchByFecha(Date);
                 if(list.size() > 0){
                     for(int i = 0; i < list.size(); i++){
                         //ListaNombres = ListaNombres + "- ";
